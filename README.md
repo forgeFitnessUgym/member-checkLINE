@@ -1,1 +1,1 @@
-# member-checkLINE
+# storeStatus_n_checkin_LINE
