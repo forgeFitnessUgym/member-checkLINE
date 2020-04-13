@@ -297,9 +297,11 @@ async function checkUserIdExist() {
     // Append 店面名稱到個人資料中 預設常用健身房 選項
     for (var i=0; i< 店面名稱.length; i++){
       $("#預設常用健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
+      $("#查詢健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
     } 
     
     $("#預設常用健身房").val(預設常用健身房); 
+    $("#查詢健身房").val(預設常用健身房); 
 
     paramToSend = "?API=31" + "&CustomerId=打鐵健身&StoreId="+$("#預設常用健身房").val();      
     var res = await callAPI(paramToSend, '讀取店面名稱');
@@ -488,7 +490,7 @@ function 我知道了(){
 }
 
 async function 改變店面(){
-  console.log("改變店面", $("#預設常用健身房").val());
+  console.log("改變店面", $("#查詢健身房").val());
   await 取得店面目前資料(storeInfoSource);   
   
 //  var listView = $("#紀錄List").data("kendoListView");

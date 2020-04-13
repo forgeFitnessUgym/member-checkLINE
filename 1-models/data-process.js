@@ -38,7 +38,7 @@ async function 取得店面目前資料(data) {
     var dataTemp=[];
     data.success(dataTemp);
   } else {
-    paramToSend = "?API=40" + "&StoreId=" + $("#預設常用健身房").val(); 
+    paramToSend = "?API=40" + "&StoreId=" + $("#查詢健身房").val(); 
     var res = await callAPI(paramToSend, '讀取健身房目前資料');
     //console.log(res);    
     var 店面目前資料=JSON.parse(res);
