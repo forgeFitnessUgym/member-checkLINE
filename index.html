@@ -158,11 +158,11 @@
       <div id="qrcode" style="background-color:white; width:200px; height:200px; margin-left:auto; margin-right:auto; margin-top:10px; padding:10px"></div>  
     </div>   
       
+    
     <div style=" background-color:black; color:white;">
-      <span style="font-size:20px; margin-left:10px;">店面資訊</span>      
-      <select id="預設常用健身房" type="text" class="NotoSansFont" style="font-size:20px; margin-left:10px; background-color:black;color:white; width:60%;" onchange="改變店面()">
+      <span style="font-size:22px; margin-left:10px;">店面資訊</span><br>      
+      <select id="預設常用健身房" type="text" class="NotoSansFont" style="font-size:20px; padding-left:5px; background-color:black;color:white; width:100%;" onchange="改變店面()">
       </select>
-       
     </div>
     <div style="height:10px;background-color:black"></div>   
   
@@ -174,8 +174,8 @@
           </script>
           
         <script type="text/x-kendo-template" id="nav-template">
-          <a href="#: url #" class="店面資訊卡片" >  
-            <span style="font-size:16px; color: black; margin-top:-10px; font-weight:bold">溫度: #: 溫度 # ℃ </span> 
+          <span href="#: url #" class="店面資訊卡片" > 
+            <span style="font-size:16px; color: black; margin-left:-15px; font-weight:bold">溫度: #: 溫度 # ℃ </span>
             <span style="font-size:16px; color: black; margin-top:-10px; margin-left:30px; font-weight:bold">濕度: #: 濕度 # %</span><br>  
             
             <span style="font-size:16px; color: black; margin-top:-10px; font-weight:bold">空氣品質: #: 空氣品質指數 #</span><br> 
@@ -191,7 +191,7 @@
             <span style="font-size:16px; color: black; margin-top:-10px; font-weight:bold">其他資訊: </span> <br>
             <span style="font-size:14px; color: black; margin-top:-8px; margin-left:10px;">#: 其他資訊 # </span> <br>            
             
-          </a>
+          </span>
         </script>
       </ul>
     </div>     
@@ -312,7 +312,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
  
   <script>
-    var useLocalAPIs = true;
+    var useLocalAPIs = false;
 //    try {
 //      console.log(process.env.useLocalAPIs);
 //    }catch(e){
