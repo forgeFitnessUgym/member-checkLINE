@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title></title>
+      <link rel="stylesheet" href="styles/kendo.common.min.css" />
+      <link rel="stylesheet" href="styles/kendo.default.min.css" />
+      <link rel="stylesheet" href="styles/kendo.mobile.all.min.css" />
+
+      <script src="js/jquery.min.js"></script>
+      <script src="js/kendo.all.min.js"></script>    
+  </head>
+  
+  <body>
+
+    <div data-role="view" data-init="initData"  data-title="這次量測報告" style="text-align: center;font-family: 'Noto Sans TC'" data-use-native-scrolling="true" data-show="這次量測報告Ready">
+  
+      <header data-role="header">
+        <div data-role="navbar" id="normal" class="km-accent">
+          <a data-align="left" data-role="button" onclick="app.navigate('#:back')" data-rel="" data-icon=""></a>           
+          <a data-align="right" data-role="button" href="#forms" data-rel="" data-icon="contacts"></a>       
+          <span data-role="view-title"></span>   
+        </div>
+      </header>   
+  
+  <!--
+      <a id="查看課程表header" class="km-primary km-button-center" style="width:100%; font-size: 18px; color: white; margin-left: 0px; " data-role="button" onclick="查看及收起課程表()"
+       >查看課程表 ▼</a>
+  -->
+       <div id="課表圖片Div" style="display:block">
+         <img id="課表圖片" src="CharderSampleReport.jpg" width="100%" onerror="this.src='索取課程表.png'"/>
+  <!--       <a class="km-primary km-button-center" style="width:100%; font-size: 18px; color: white; margin-left: 0px; " data-role="button" onclick="查看及收起課程表()">收起課程表 ▲</a>  -->
+      
+         <div style="height: 20px"></div>
+         <a class="" style="font-size: 18px; color: white; background-color:red; padding:10px;border-radius:8px " onclick="app.navigate('#mainDiv')">回主畫面</a> 
+       </div>        
+
+
+    </div>
+    
+    <script>
+      var hrefString = window.location.href;
+      var inputParamString = hrefString.split("?");
+      var inputParam = inputParamString[2].split("&")
+      var reportId = inputParamString[inputParamString.length-1].split("=")[1];
+      $.loading.start("讀取量測資料");
+      
+      function 這次量測報告Ready(){
+        console.log(reportId);  
+      $.loading.end();        
+      }
+    </script>
+    
+    <script>
+      //以下必須 remark 掉，不然會有問題
+      //var app = new kendo.mobile.Application(document.body, { skin: "nova" });
+    </script>
+
+  </body>
+</html>
