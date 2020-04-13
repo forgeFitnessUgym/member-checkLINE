@@ -250,6 +250,21 @@ function callAPI(param, loadingMessage) {
 
 async function checkUserIdExist() {
   //Call API:00 檢查 userId 有沒有重複參加 */
+  
+  // 讀取店面名稱
+  paramToSend = "?API=30" + "&CustomerId=打鐵健身";
+  var res = await callAPI(paramToSend, '讀取店面名稱');
+  店面名稱 = JSON.parse(res);
+  console.log(店面名稱);
+
+  // Append 店面名稱到個人資料中 預設常用健身房 選項
+  for (var i=0; i< 店面名稱.length; i++){
+    $("#預設常用健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
+    $("#查詢健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
+  } 
+
+  $("#預設常用健身房").val(預設常用健身房); 
+  $("#查詢健身房").val(預設常用健身房);  
 
   $.loading.start('檢查是否已填寫必要資料');
   paramToSend = "?API=14" + "&UserId=" + userId[1];
@@ -288,21 +303,22 @@ async function checkUserIdExist() {
     
     $("#LINE頭像").attr("src", userProfile[7]);
     
-    // 讀取店面名稱和機器序號
-    paramToSend = "?API=30" + "&CustomerId=打鐵健身";
-    var res = await callAPI(paramToSend, '讀取店面名稱');
-    店面名稱 = JSON.parse(res);
-    console.log(店面名稱);
+//    // 讀取店面名稱
+//    paramToSend = "?API=30" + "&CustomerId=打鐵健身";
+//    var res = await callAPI(paramToSend, '讀取店面名稱');
+//    店面名稱 = JSON.parse(res);
+//    console.log(店面名稱);
+//
+//    // Append 店面名稱到個人資料中 預設常用健身房 選項
+//    for (var i=0; i< 店面名稱.length; i++){
+//      $("#預設常用健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
+//      $("#查詢健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
+//    } 
+//    
+//    $("#預設常用健身房").val(預設常用健身房); 
+//    $("#查詢健身房").val(預設常用健身房); 
 
-    // Append 店面名稱到個人資料中 預設常用健身房 選項
-    for (var i=0; i< 店面名稱.length; i++){
-      $("#預設常用健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
-      $("#查詢健身房").append("<option value='"+店面名稱[i]+"'>"+店面名稱[i]+"</option>");
-    } 
-    
-    $("#預設常用健身房").val(預設常用健身房); 
-    $("#查詢健身房").val(預設常用健身房); 
-
+    // 讀取機器序號
     paramToSend = "?API=31" + "&CustomerId=打鐵健身&StoreId="+$("#預設常用健身房").val();      
     var res = await callAPI(paramToSend, '讀取店面名稱');
     機器序號 = res;
