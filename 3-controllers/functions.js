@@ -299,7 +299,7 @@ async function checkUserIdExist() {
     
     // formEmergencyPhone 挪來用為 常用預設健身房
     預設常用健身房 = (userProfile[11]=="undefined")? "永和店":userProfile[11];
-    //$("#預設常用健身房").val(預設常用健身房);  
+    $("#預設常用健身房").val(預設常用健身房);  
     
     $("#LINE頭像").attr("src", userProfile[7]);
     
@@ -316,7 +316,7 @@ async function checkUserIdExist() {
 //    } 
 //    
 //    $("#預設常用健身房").val(預設常用健身房); 
-//    $("#查詢健身房").val(預設常用健身房); 
+    $("#查詢健身房").val(預設常用健身房); 
 
     // 讀取機器序號
     paramToSend = "?API=31" + "&CustomerId=打鐵健身&StoreId="+$("#預設常用健身房").val();      
@@ -326,7 +326,8 @@ async function checkUserIdExist() {
             
     refresh=true;
     
-    var qr_text = "打鐵,"+userId[1]+","+預設常用健身房;
+    var qr_text = "https://forge-fitness-api.herokuapp.com/?API=41&StoreId="+預設常用健身房+"&UserId="+userId[1]+"&Gender="+$("#formUserGender").val();
+    
     console.log(qr_text);
     qrcode.makeCode(qr_text); 
     
