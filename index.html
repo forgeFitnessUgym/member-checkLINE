@@ -25,7 +25,11 @@
   <link rel="stylesheet" href="css/loading.css" />
   <script src="js/loading.js"></script> 
   
-  <script type="text/javascript" src="qrcode.js"></script>        
+  <script type="text/javascript" src="qrcode.js"></script>     
+  
+<!--  <script src="https://cdn.jsdelivr.net/gh/emn178/hi-base64/build/base64.min.js"></script>-->
+  <script src="js/hi-base64.min.js"></script>
+        
 </head>
 
 <body id="body">
@@ -87,20 +91,23 @@
       font-family: 'Noto Sans TC'; 
     }
     
-    .進行量測Label {
-      font-size: 18px;
+    .管理Label {
+      font-size: 20px;
 /*      font-weight: bold;*/
       margin-left: 15px;
       color: white;
     }
 
-    .進行量測Input {
-      font-size: 18px;
+    .管理Input {
+      font-size: 20px;
 /*      font-weight: bold;*/
       padding-left: 10px;
 /*      margin-right: 15px;      */
       width: 100%;
       color: darkslategray;
+      border-style:solid;
+      padding:5px;
+      margin-left:5px;
     }    
     
     .店面資訊卡片 {
@@ -149,18 +156,49 @@
     </div>
 -->
         
-    <div style="background-color: black; height:230px; " > 
-<!--
-      <div style="height:60px; background-color:black; float: left">
-        <img src="ForgeLogo小.png" height="70px" style="margin-top:3px; margin-left: 0px">
-      </div>      
--->
+    <div style="background-color: black; height:250px; " > 
+
+      <div style="text-align:center; margin-top: 20px"><span id="店面QR碼" class="管理Label"> QR Code</span></div>
       <div id="qrcode" style="background-color:white; width:200px; height:200px; margin-left:auto; margin-right:auto; margin-top:10px; padding:10px"></div>  
     </div>   
-      
     
+    <div id="管理Button" style="background-color:black; color:white; height:50px" onclick="管理按鈕()">
+      <span id="管理按鈕文字" style="background-color:red; font-size:20px; border-radius:5px; margin-left:10px; padding:0px">管理</span>
+    </div>
+    
+    <div id="管理Div" style="background-color:black; color:white; height:350px; display:none">
+      <div class="管理Label" style="font-size:20px">人數管理:</div><br>
+      <span  class="管理Label" style="margin-left:20px">男性數:</span>
+      <input class="管理Input" style="background-color:black; color:white; width:50px"></input>    
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>    
+      <br><br>
+      <span  class="管理Label" style="margin-left:20px">女性數:</span>
+      <input class="管理Input" style="background-color:black; color:white; width:50px"></input>    
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>                          
+      <br><br>
+      <span  class="管理Label" style="margin-left:20px">不透露:</span>
+      <input class="管理Input" style="background-color:black; color:white; width:50px"></input>    
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>     
+
+      <hr>   
+      <br>
+      <span class="管理Label" style="font-size:20px">消毒管理:</span>
+      <span style="background-color:red; font-size:18px; border-radius:5px; margin-right:20px; padding:5px;float:right">設定</span><br><br>
+      <input class="管理Input" type="datetime-local" style="font-size:20px; background-color:black; color:white; width:90%; margin-left:20px" ></input>  <br>
+                                   
+      <br>                                                                                 
+      <hr>                                                
+    </div>
+        
     <div style=" background-color:black; color:white;">
-      <span style="font-size:22px; margin-left:10px;">店面資訊</span><br>      
+      <span style="font-size:22px; margin-left:10px;">店面資訊</span>
+      <br>      
       <select id="查詢健身房" type="text" class="NotoSansFont" style="font-size:20px; padding-left:5px; background-color:black;color:white; width:100%;" onchange="改變店面()">
       </select>
     </div>
@@ -349,7 +387,8 @@
     var 店面名稱;
     var 機器序號;
     var 已經是會員;
-            
+    var 顯示管理Div=false;
+    
     var qrcode = new QRCode(document.getElementById("qrcode"), {
       width : 180,
       height : 180

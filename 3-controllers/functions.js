@@ -328,8 +328,22 @@ async function checkUserIdExist() {
     
     var qr_text = "https://forge-fitness-api.herokuapp.com/?API=41&StoreId="+預設常用健身房+"&UserId="+userId[1]+"&Gender="+$("#formUserGender").val();
     
-    console.log(qr_text);
-    qrcode.makeCode(qr_text); 
+    console.log(qr_text.length);
+
+    // Base64 對 Arduino ESP8266 有點 heavy
+    //var base64_text = base64.encode(qr_text);
+    //console.log(base64_text);
+    
+    var encrypt_text="";
+    for (i=0; i< qr_text.length; i++){
+      var d = (i%2==0)? 1:-1;
+      var a = qr_text.charCodeAt(i);
+      var b = String.fromCharCode(a+d)
+      encrypt_text+=b;
+    }
+    console.log(encrypt_text);
+    
+    qrcode.makeCode(encrypt_text); 
     
     await 取得店面目前資料(storeInfoSource);     
     
@@ -513,4 +527,16 @@ async function 改變店面(){
 //  var listView = $("#紀錄List").data("kendoListView");
 //  // refreshes the ListView
 //  listView.refresh();  
+}
+
+function 管理按鈕(){
+  if (顯示管理Div) {
+    顯示管理Div = false;
+    $("#管理Div").css("display", "none")
+    $("#管理按鈕文字").text("管理")
+  } else {
+    顯示管理Div = true;
+    $("#管理Div").css("display", "block")
+    $("#管理按鈕文字").text("收起")    
+  }
 }
