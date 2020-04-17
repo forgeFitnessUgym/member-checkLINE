@@ -155,15 +155,18 @@
       <img src="ForgeLogo.png" height="100px" style="margin-top:-20px; float: left">
     </div>
 -->
-        
-    <div style="background-color: black; height:250px; " > 
-
-      <div style="text-align:center; margin-top: 20px"><span id="店面QR碼" class="管理Label"> QR Code</span></div>
-      <div id="qrcode" style="background-color:white; width:200px; height:200px; margin-left:auto; margin-right:auto; margin-top:10px; padding:10px"></div>  
+    <div style="height=20px;background-color:black">.</div>    
+    <div id="QR_Button" style="background-color:black; color:white; height:40px;" onclick="QR按鈕()">
+      <span id="QR按鈕文字" style="background-color:red; font-size:20px; border-radius:5px; margin-left:10px; padding:5px;">QR 碼</span>
+    </div>
+            
+    <div id="QR_Div" style="background-color: black; height:220px; display:none " > 
+      <div id="qrcode" style="background-color:white; width:200px; height:200px;margin-left:auto; margin-right:auto; margin-top:10px; padding:10px"></div>  
     </div>   
     
+    <div style="height=20px;background-color:black">.</div>      
     <div id="管理Button" style="background-color:black; color:white; height:50px" onclick="管理按鈕()">
-      <span id="管理按鈕文字" style="background-color:red; font-size:20px; border-radius:5px; margin-left:10px; padding:0px">管理</span>
+      <span id="管理按鈕文字" style="background-color:red; font-size:20px; border-radius:5px; margin-left:10px; padding:5px; padding-left:10px; padding-right:12px">管理</span>
     </div>
     
     <div id="管理Div" style="background-color:black; color:white; height:350px; display:none">
@@ -188,7 +191,7 @@
 
       <hr>   
       <br>
-      <span class="管理Label" style="font-size:20px">消毒管理:</span>
+      <span class="管理Label" style="font-size:20px">消毒時間輸入:</span>
       <span style="background-color:red; font-size:18px; border-radius:5px; margin-right:20px; padding:5px;float:right">設定</span><br><br>
       <input class="管理Input" type="datetime-local" style="font-size:20px; background-color:black; color:white; width:90%; margin-left:20px" ></input>  <br>
                                    
@@ -388,6 +391,8 @@
     var 機器序號;
     var 已經是會員;
     var 顯示管理Div=false;
+    var 顯示QR_Div=false;    
+    
     
     var qrcode = new QRCode(document.getElementById("qrcode"), {
       width : 180,

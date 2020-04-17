@@ -326,7 +326,7 @@ async function checkUserIdExist() {
             
     refresh=true;
     
-    var qr_text = "https://forge-fitness-api.herokuapp.com/?API=41&StoreId="+預設常用健身房+"&UserId="+userId[1]+"&Gender="+$("#formUserGender").val();
+    var qr_text = "https://forge-fitness-api.herokuapp.com/?API=42&StoreId="+預設常用健身房+"&UserId="+userId[1]+"&Gender="+$("#formUserGender").val();
     
     console.log(qr_text.length);
 
@@ -334,16 +334,16 @@ async function checkUserIdExist() {
     //var base64_text = base64.encode(qr_text);
     //console.log(base64_text);
     
-    var encrypt_text="";
-    for (i=0; i< qr_text.length; i++){
-      var d = (i%2==0)? 1:-1;
-      var a = qr_text.charCodeAt(i);
-      var b = String.fromCharCode(a+d)
-      encrypt_text+=b;
-    }
-    console.log(encrypt_text);
+    //var encrypt_text="";
+    //for (i=0; i< qr_text.length; i++){
+    //  var d = (i%2==0)? 1:-1;
+    //  var a = qr_text.charCodeAt(i);
+    //  var b = String.fromCharCode(a+d)
+    //  encrypt_text+=b;
+    //}
+    //console.log(encrypt_text);
     
-    qrcode.makeCode(encrypt_text); 
+    qrcode.makeCode(qr_text); 
     
     await 取得店面目前資料(storeInfoSource);     
     
@@ -540,3 +540,15 @@ function 管理按鈕(){
     $("#管理按鈕文字").text("收起")    
   }
 }
+
+function QR按鈕() {
+  if (顯示QR_Div) {
+    顯示QR_Div = false;
+    $("#QR_Div").css("display", "none")
+    $("#QR按鈕文字").text("QR 碼")
+  } else {
+    顯示QR_Div = true;
+    $("#QR_Div").css("display", "block")
+    $("#QR按鈕文字").text("收起")    
+  }
+}  
