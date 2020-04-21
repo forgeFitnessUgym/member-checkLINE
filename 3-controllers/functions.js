@@ -552,3 +552,120 @@ function QR按鈕() {
     $("#QR按鈕文字").text("收起")    
   }
 }  
+
+//"https://forge-fitness-api.herokuapp.com/?API=42&StoreId="+預設常用健身房+"&UserId="+userId[1]+"&Gender="+$("#formUserGender").val();
+
+async function 設定男性人數(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=男&Number=" + $("#店內男性數").val();
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  console.log(res);
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 男性人數加一(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=男&Inc=1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  var temp = parseInt($("#店內男性數").val());
+  $("#店內男性數").val(String(temp+1));  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}  
+async function 男性人數減一(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=男&Inc=-1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  var temp = parseInt($("#店內男性數").val());
+  $("#店內男性數").val(String(temp-1));  
+  console.log(res);  
+}  
+async function 男性人數重置(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=男&Reset=1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  $("#店內男性數").val("0");  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+
+async function 設定女性人數(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=女&Number=" + $("#店內女性數").val();
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 女性人數加一(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=女&Inc=1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  var temp = parseInt($("#店內女性數").val());
+  $("#店內女性數").val(String(temp+1));  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 女性人數減一(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=女&Inc=-1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  var temp = parseInt($("#店內女性數").val());
+  $("#店內女性數").val(String(temp-1));  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 女性人數重置(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=女&Reset=2";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  $("#店內女性數").val("0");  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+
+async function 設定不透露性別人數(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=不透露&Number=" + $("#店內不透露性別數").val();
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 不透露性別人數加一(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=不透露&Inc=1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  var temp = parseInt($("#店內不透露性別數").val());
+  $("#店內不透露性別數").val(String(temp+1));  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 不透露性別人數減一(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=不透露&Inc=-1";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  var temp = parseInt($("#店內不透露性別數").val());
+  $("#店內不透露性別數").val(String(temp-1));  
+  console.log(res);  
+  await 取得店面目前資料(storeInfoSource);   
+}
+async function 不透露性別人數重置(){
+  var paramToSend = "?API=41" + "&StoreId=" + 預設常用健身房 + "&Gender=不透露&Reset=3";
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  $("#店內不透露性別數").val("0");  
+  console.log(res);   
+  await 取得店面目前資料(storeInfoSource);    
+}
+
+async function 輸入消毒時間(){  
+  var nowDateTime = new Date();
+  var paramToSend = "?API=43" + "&StoreId=" + 預設常用健身房 + "&Message=上次消毒時間:"+nowDateTime.toLocaleString();
+  console.log(paramToSend);
+  var res = await callAPI(paramToSend, '寫入資料');
+  console.log(res);  
+  $("#消毒時間").val("上次消毒時間:"+nowDateTime.toLocaleString());
+  await 取得店面目前資料(storeInfoSource);  
+}
+
+
+
+

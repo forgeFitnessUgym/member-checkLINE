@@ -172,28 +172,29 @@
     <div id="管理Div" style="background-color:black; color:white; height:350px; display:none">
       <div class="管理Label" style="font-size:20px">人數管理:</div><br>
       <span  class="管理Label" style="margin-left:20px">男性數:</span>
-      <input class="管理Input" style="background-color:black; color:white; width:50px"></input>    
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>    
+      <input id="店內男性數" class="管理Input" style="background-color:black; color:white; width:50px"></input>    
+      <span onclick="設定男性人數()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
+      <span onclick="男性人數加一()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
+      <span onclick="男性人數減一()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   
+      <span onclick="男性人數重置()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>    
       <br><br>
       <span  class="管理Label" style="margin-left:20px">女性數:</span>
-      <input class="管理Input" style="background-color:black; color:white; width:50px"></input>    
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>                          
+      <input id="店內女性數" class="管理Input" style="background-color:black; color:white; width:50px"></input>    
+      <span onclick="設定女性人數()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
+      <span onclick="女性人數加一()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
+      <span onclick="女性人數減一()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span> <span onclick="女性人數重置()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>                          
       <br><br>
       <span  class="管理Label" style="margin-left:20px">不透露:</span>
-      <input class="管理Input" style="background-color:black; color:white; width:50px"></input>    
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span>   <span style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>     
+      <input id="店內不透露性別數" class="管理Input" style="background-color:black; color:white; width:50px"></input>    
+      <span onclick="設定不透露性別人數()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">設定</span>
+      <span onclick="不透露性別人數加一()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">+1</span>
+      <span onclick="不透露性別人數減一()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">-1</span> <span onclick="不透露性別人數重置()" style="background-color:red; font-size:18px; border-radius:5px; margin-left:10px; padding:5px; ">重置</span>     
 
       <hr>   
       <br>
       <span class="管理Label" style="font-size:20px">消毒時間輸入:</span>
-      <span style="background-color:red; font-size:18px; border-radius:5px; margin-right:20px; padding:5px;float:right">設定</span><br><br>
-      <input class="管理Input" type="datetime-local" style="font-size:20px; background-color:black; color:white; width:90%; margin-left:20px" ></input>  <br>
+      <span onclick="輸入消毒時間()" style="background-color:red; font-size:18px; border-radius:5px; margin-right:20px; padding:5px;float:right">設定</span><br><br>
+      <input id="消毒時間" class="管理Input" style="font-size:20px; background-color:black; color:white; width:90%; margin-left:20px" ></input>  <br>
                                    
       <br>                                                                                 
       <hr>                                                
@@ -351,7 +352,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
  
   <script>
-    var useLocalAPIs = false;
+    var useLocalAPIs = true;
 //    try {
 //      console.log(process.env.useLocalAPIs);
 //    }catch(e){

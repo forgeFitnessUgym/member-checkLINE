@@ -44,6 +44,10 @@ async function 取得店面目前資料(data) {
     var 店面目前資料=JSON.parse(res);
     console.log(店面目前資料);    
     
+    $("#店內男性數").val(店面目前資料.男性人數);
+    $("#店內女性數").val(店面目前資料.女性人數);
+    $("#店內不透露性別數").val(店面目前資料.不透露性別人數);
+    
     var dataTemp=[];
     //for (var i=0; i<店面目前資料.length; i++ ) {
       var 空氣品質 = 店面目前資料.PM25_eCO2_VTOC;
